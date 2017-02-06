@@ -87,8 +87,8 @@ public class AccomDAO {
  		AccomBean bean = new AccomBean(); 
  		
  		bean.setAddr1(addr1.item(0).getTextContent()); 
- 		bean.setContentid(Integer.parseInt(contentid.item(0).getTextContent()));
- 		bean.setContenttypeid(Integer.parseInt(contenttypeid.item(0).getTextContent()));
+ 		bean.setContentid(contentid.item(0).getTextContent());
+ 		bean.setContenttypeid(contenttypeid.item(0).getTextContent());
  		bean.setFirstimage(firstimage.item(0).getTextContent()); 
  		bean.setOverview(overview.item(0).getTextContent());
  		bean.setTitle(title.item(0).getTextContent());
