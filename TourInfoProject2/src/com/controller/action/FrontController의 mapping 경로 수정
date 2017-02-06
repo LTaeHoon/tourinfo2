@@ -1,0 +1,5 @@
+FrontController의 mapping 경로 수정
+
+FrontController.java
+
+fis 경로 수정(mapping.properties의 location 복/붙)

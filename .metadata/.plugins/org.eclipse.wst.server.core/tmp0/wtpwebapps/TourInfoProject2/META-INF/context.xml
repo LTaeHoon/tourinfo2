@@ -1,0 +1,19 @@
+<Context> 
+  <Resource 
+   name="jdbc/orcl" 
+   auth="Container"
+   type="javax.sql.DataSource"   
+   driverClassName="oracle.jdbc.driver.OracleDriver"   
+   url="jdbc:oracle:thin:@127.0.0.1:1521:orcl"
+   username="scott" 
+   password="tiger"
+   maxActive="200" 
+   maxIdle="100"/>  
+</Context>
+
+<!-- 
+
+	maxActive : 최대 커넥션 수 지정
+	macIdle	  : 유휴시간 최대 커넥션 수 지정
+
+ -->
