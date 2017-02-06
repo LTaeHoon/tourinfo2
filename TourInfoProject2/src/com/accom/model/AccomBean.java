@@ -1,8 +1,8 @@
 package com.accom.model;
 
 public class AccomBean {
-	private int contentid;
-	private int contenttypeid;
+	private String contentid;
+	private String contenttypeid;
 	private String addr1;
 
 	private String firstimage;
@@ -15,17 +15,16 @@ public class AccomBean {
 	public void setAddr1(String addr1) {
 		this.addr1 = addr1;
 	}
-	
-	public int getContentid() {
+	public String getContentid() {
 		return contentid;
 	}
-	public void setContentid(int contentid) {
+	public void setContentid(String contentid) {
 		this.contentid = contentid;
 	}
-	public int getContenttypeid() {
+	public String getContenttypeid() {
 		return contenttypeid;
 	}
-	public void setContenttypeid(int contenttypeid) {
+	public void setContenttypeid(String contenttypeid) {
 		this.contenttypeid = contenttypeid;
 	}
 	public String getFirstimage() {
