@@ -1,11 +1,21 @@
 package com.accom.model;
 
-public class Accombean {
+public class AccomBean {
 	private int contentid;
 	private int contenttypeid;
+	private String addr1;
+
 	private String firstimage;
 	private String overview;
 	private String title;
+	
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	
 	public int getContentid() {
 		return contentid;
 	}

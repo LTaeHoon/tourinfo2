@@ -60,6 +60,17 @@
 						<tr>
 							
 							<th>
+							title
+							</th>
+							
+							<td>
+							<%=bean.getTitle() %>
+							</td>
+						</tr>
+						
+						<tr>
+							
+							<th>
 							addr1
 							</th>
 							
@@ -76,6 +87,17 @@
 							
 							<td>
 							<%=bean.getContentid() %>
+							</td>
+						</tr>
+						
+						<tr>
+							
+							<th>
+							contentypeid
+							</th>
+							
+							<td>
+							<%=bean.getContenttypeid() %>
 							</td>
 						</tr>
 						

@@ -92,6 +92,17 @@
 						<tr>
 							
 							<th>
+							contentypeid
+							</th>
+							
+							<td>
+							<%=bean.getContenttypeid() %>
+							</td>
+						</tr>
+						
+						<tr>
+							
+							<th>
 							firstimage
 							</th>
 							

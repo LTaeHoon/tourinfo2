@@ -1,6 +1,6 @@
-package com.food.model;
+package com.sight.model;
 
-public class FoodBean { // 배열로 저장
+public class SightBean { // 배열로 저장
 	
 	private int contentid;
 	private int contenttypeid;
@@ -10,8 +10,7 @@ public class FoodBean { // 배열로 저장
 	private String title;
 	
 	
-	
-	
+
 	public int getContentid() {
 		return contentid;
 	}
