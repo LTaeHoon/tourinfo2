@@ -45,7 +45,7 @@
 			
 			<h2>관광지 list</h2>
 
-			<table border="1">
+			<table border="1" width="1100">
 			
 				<%
 				
@@ -58,70 +58,35 @@
 						%>
 						
 						<tr>
+						
+							<td rowspan="3">
 							
-							<th>
-							title
-							</th>
+								<img src="<%=bean.getFirstimage() %>" width="200" height="200"/>
 							
-							<td>
-							<%=bean.getTitle() %>
 							</td>
+							
+							<td width="900">
+								<%=bean.getTitle() %>
+							</td>
+						
 						</tr>
 						
 						<tr>
-							
-							<th>
-							addr1
-							</th>
-							
-							<td>
-							<%=bean.getAddr1() %>
+
+							<td width="900">
+								<%=bean.getAddr1() %>
 							</td>
+						
 						</tr>
 						
 						<tr>
-							
-							<th>
-							contentid
-							</th>
-							
-							<td>
-							<%=bean.getContentid() %>
+
+							<td width="900">
+								<%=bean.getOverview().substring(0, 200) %>...
 							</td>
-						</tr>
 						
-						<tr>
-							
-							<th>
-							contentypeid
-							</th>
-							
-							<td>
-							<%=bean.getContenttypeid() %>
-							</td>
 						</tr>
-						
-						<tr>
-							
-							<th>
-							firstimage
-							</th>
-							
-							<td>
-							<%=bean.getFirstimage() %>
-							</td>
-						</tr>
-						
-						<tr>
-							
-							<th>
-							overview
-							</th>
-							
-							<td>
-							<%=bean.getOverview() %>
-							</td>
-						</tr>			
+
 						
 						<%				
 						
