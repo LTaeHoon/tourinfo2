@@ -1,21 +1,21 @@
 package com.main.model;
 
 public class Databean {
-	private int contentId;
-	private int contentTypeid;
+	private String contentId;
+	private String contentTypeid;
 	private String title;
 	
 	
-	public int getContentId() {
+	public String getContentId() {
 		return contentId;
 	}
-	public void setContentId(int contentId) {
+	public void setContentId(String contentId) {
 		this.contentId = contentId;
 	}
-	public int getContentTypeid() {
+	public String getContentTypeid() {
 		return contentTypeid;
 	}
-	public void setContentTypeid(int contentTypeid) {
+	public void setContentTypeid(String contentTypeid) {
 		this.contentTypeid = contentTypeid;
 	}
 	public String getTitle() {

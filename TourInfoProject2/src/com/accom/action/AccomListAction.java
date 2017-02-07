@@ -19,8 +19,8 @@ public class AccomListAction implements Action {
 		
 		
 		AccomDAO dao = new AccomDAO();
-		
-		List<AccomBean> list = dao.AccomXmlParsing(); 
+	
+		List<AccomBean> list = dao.selectAccom(); 
 		
 		request.setAttribute("list", list); 
 		

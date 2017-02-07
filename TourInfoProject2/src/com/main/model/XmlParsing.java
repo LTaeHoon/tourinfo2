@@ -25,9 +25,10 @@ import db.DBConnection;
 
 
 
+
 public class XmlParsing {
 
-	public void parsing() throws Exception {
+	 public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Databean> beanlist = new ArrayList<Databean>();
@@ -74,22 +75,22 @@ public class XmlParsing {
 			
 			if(type==12){
 				bean= new Databean();
-				bean.setContentId(Integer.parseInt(contentid.item(i).getTextContent()));
-				bean.setContentTypeid(Integer.parseInt(contenttypeid.item(i).getTextContent()));
+				bean.setContentId(contentid.item(i).getTextContent());
+				bean.setContentTypeid(contenttypeid.item(i).getTextContent());
 				bean.setTitle(title.item(i).getTextContent());
 				beanlist.add(bean);
 			}
 			if(type==32){
 				bean= new Databean();
-				bean.setContentId(Integer.parseInt(contentid.item(i).getTextContent()));
-				bean.setContentTypeid(Integer.parseInt(contenttypeid.item(i).getTextContent()));
+				bean.setContentId(contentid.item(i).getTextContent());
+				bean.setContentTypeid(contenttypeid.item(i).getTextContent());
 				bean.setTitle(title.item(i).getTextContent());
 				beanlist.add(bean);
 			}
-			if(type==38){
+			if(type==39){
 				bean= new Databean();
-				bean.setContentId(Integer.parseInt(contentid.item(i).getTextContent()));
-				bean.setContentTypeid(Integer.parseInt(contenttypeid.item(i).getTextContent()));
+				bean.setContentId(contentid.item(i).getTextContent());
+				bean.setContentTypeid(contenttypeid.item(i).getTextContent());
 				bean.setTitle(title.item(i).getTextContent());
 				beanlist.add(bean);
 			}
@@ -102,15 +103,15 @@ public class XmlParsing {
 			System.out.println(b.getTitle());
 		}*/
 		
-		DBConnection db = new DBConnection();
-		con = db.con;
+		db.DriverTest db = new db.DriverTest();
+		con = db.con();
 		for(Databean b : beanlist){
 			try{
 				
 				String sql = "insert into tourcode values(?,?,?)";
 				pstmt=con.prepareStatement(sql);
-				pstmt.setInt(1, b.getContentId());
-				pstmt.setInt(2, b.getContentTypeid());
+				pstmt.setString(1, b.getContentId());
+				pstmt.setString(2, b.getContentTypeid());
 				pstmt.setString(3, b.getTitle());
 				
 				int result =pstmt.executeUpdate();

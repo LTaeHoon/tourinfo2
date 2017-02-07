@@ -37,64 +37,33 @@ public class AccomDAO {
 			e.printStackTrace();
 		}	
 	}
-	//숙박 contentid 리스트 반환하는 함수
-	public List<Integer> select(){
-		List<Integer> content = new ArrayList<Integer>();
+	public List<AccomBean> selectAccom() throws SAXException, IOException, ParserConfigurationException, XPathExpressionException {
 		
-		sql = "select contentid from tourinfo where contenttypeid=39";
+		//bean 객체 받을 리스트 객체 선언
+		List<AccomBean> list = new ArrayList<AccomBean>();
+		
+		sql = "select * from commoninfo where contenttypeid=32";
 		try{
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				content.add(rs.getInt(1));	
+				// bean 객체 선언
+				AccomBean bean = new AccomBean(); 
+				bean.setContentid(rs.getString(1));
+				bean.setContenttypeid(rs.getString(2));
+				bean.setAddr1(rs.getString(3));
+				bean.setFirstimage(rs.getString(4));
+				
+				bean.setOverview(rs.getString(5));
+				bean.setTitle(rs.getString(6));
+				bean.setHompage(rs.getString(7));
+				bean.setTel(rs.getString(8));
+				bean.setZipcode(rs.getString(9));
+				list.add(bean);
 			}
-			rs.close();pstmt.close();con.close();
-		}catch(Exception  e){
+		}catch(Exception e){
 			e.printStackTrace();
-		}
-		return content;
-	}
-	
-	
-	public List<AccomBean> AccomXmlParsing() throws SAXException, IOException, ParserConfigurationException, XPathExpressionException {
-		
-		List<AccomBean> list = new ArrayList<AccomBean>();
-		
- 		String url = "http://api.visitkorea.or.kr/openapi/"
- 				+ "service/rest/KorService/detailCommon?"
- 				+ "ServiceKey=EeBjN2xdCzzcqHvefO0rZXaycAim0uGpKxnOX72PY1UpkSZnifzIK1kxLm61XXaQ4pFxhbW%2F%2FZbmQDKFiAFNVA%3D%3D&"
- 				+ "contentId=143036&"
- 				+ "defaultYN=Y&"
- 				+ "addrinfoYN=Y&"
- 				+ "firstImageYN=Y&"
- 				+ "overviewYN=Y&"
- 				+ "MobileOS=ETC&MobileApp=AppTesting"; 
- 		
- 		// XML Document 객체 생성 
- 		Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(url); 
-		 
- 		// Xpath 생성 
- 		XPath xpath = XPathFactory.newInstance().newXPath(); 
- 		
- 		NodeList item = (NodeList)xpath.evaluate("//item", document, XPathConstants.NODESET); 
- 		NodeList addr1 = (NodeList)xpath.evaluate("//item/addr1", document, XPathConstants.NODESET); 
- 		NodeList contentid = (NodeList)xpath.evaluate("//item/contentid", document, XPathConstants.NODESET);
- 		NodeList contenttypeid = (NodeList)xpath.evaluate("//item/contenttypeid", document, XPathConstants.NODESET);
- 		NodeList firstimage = (NodeList)xpath.evaluate("//item/firstimage", document, XPathConstants.NODESET); 
- 		NodeList overview = (NodeList)xpath.evaluate("//item/overview", document, XPathConstants.NODESET); 
- 		NodeList title = (NodeList)xpath.evaluate("//item/title", document, XPathConstants.NODESET); 
-		
- 		AccomBean bean = new AccomBean(); 
- 		
- 		bean.setAddr1(addr1.item(0).getTextContent()); 
- 		bean.setContentid(contentid.item(0).getTextContent());
- 		bean.setContenttypeid(contenttypeid.item(0).getTextContent());
- 		bean.setFirstimage(firstimage.item(0).getTextContent()); 
- 		bean.setOverview(overview.item(0).getTextContent());
- 		bean.setTitle(title.item(0).getTextContent());
- 		
- 		list.add(bean); 
- 		
+		}	
  		return list;
  		
 	}

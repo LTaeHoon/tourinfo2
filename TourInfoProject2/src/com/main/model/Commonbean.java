@@ -1,6 +1,6 @@
-package com.accom.model;
+package com.main.model;
 
-public class AccomBean {
+public class Commonbean{
 	private String contentid;
 	private String contenttypeid;
 	private String addr1;
@@ -68,6 +68,4 @@ public class AccomBean {
 	public void setHompage(String hompage) {
 		this.hompage = hompage;
 	}
-
-
 }

@@ -18,8 +18,7 @@ public class SightListAction implements Action {
 		
 		SightDAO dao = new SightDAO();
 		
-		List<SightBean> list = dao.SightXmlParsing();
-		
+		List<SightBean> list = dao.selectSight();
 		request.setAttribute("list", list); 
 		
 		ActionForward forward = new ActionForward();

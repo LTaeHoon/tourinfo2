@@ -43,65 +43,41 @@
 			%>
 			
 			<h2>숙박 list</h2>
-
-			<table border="1" width="1100">
-			
+		<table border="1" width="1100" style="table-layout:fixed">
 				<%
-				
-				if (list != null){
-					
-					
+				if (list!= null){
 					for (AccomBean bean : list){
 						
-						
 						%>
-
 						<tr>
-						
 							<td rowspan="3">
-							
-								<img src="<%=bean.getFirstimage() %>" width="200" height="200"/>
-							
+								<%if(bean.getFirstimage()==null){
+									%><img src="#" width="200" height="200"/>
+									 <% 
+								}else{%>
+								<img src="<%=bean.getFirstimage()%>" width="200" height="200"/>
+								<%}
+								%>
 							</td>
-							
 							<td width="900">
 								<%=bean.getTitle() %>
 							</td>
-						
 						</tr>
-						
 						<tr>
-
 							<td width="900">
 								<%=bean.getAddr1() %>
 							</td>
-						
 						</tr>
-						
 						<tr>
-
-							<td width="900">
-								<%=bean.getOverview().substring(0, 200) %>...
+							<td width="900" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+								<%=bean.getOverview()%>...
 							</td>
-						
-						</tr>			
-						
+						</tr>
 						<%				
-						
-						
-						
-						
 					}
-					
-		
-					
 				}
-				
 				%>
-			
-		
-			
-			</table>        
+			</table>       
 
 
         </div>

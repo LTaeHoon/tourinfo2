@@ -1,6 +1,9 @@
 package com.sight.model;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,49 +18,53 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import db.DBConnection;
+
 public class SightDAO {
+	private Connection con=null;
+	private PreparedStatement pstmt=null;
+	private ResultSet rs=null;	
+	private String sql=null;
 	
-	public List<SightBean> SightXmlParsing() throws SAXException, IOException, ParserConfigurationException, XPathExpressionException {
+	public SightDAO(){
+		try{
+			DBConnection db = new DBConnection();
+			con = db.con; // 커넥션 가져오기
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+	}
+	
+	public List<SightBean> selectSight() throws SAXException, IOException, ParserConfigurationException, XPathExpressionException {
 		
+		//bean 객체 받을 리스트 객체 선언
 		List<SightBean> list = new ArrayList<SightBean>();
 		
- 		String url = "http://api.visitkorea.or.kr/openapi/"
- 				+ "service/rest/KorService/detailCommon?"
- 				+ "ServiceKey=EeBjN2xdCzzcqHvefO0rZXaycAim0uGpKxnOX72PY1UpkSZnifzIK1kxLm61XXaQ4pFxhbW%2F%2FZbmQDKFiAFNVA%3D%3D&"
- 				+ "contentId=126508&"
- 				+ "defaultYN=Y&"
- 				+ "addrinfoYN=Y&"
- 				+ "firstImageYN=Y&"
- 				+ "overviewYN=Y&"
- 				+ "MobileOS=ETC&MobileApp=AppTesting"; 
- 		
- 		// XML Document 객체 생성 
- 		Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(url); 
-		 
- 		// Xpath 생성 
- 		XPath xpath = XPathFactory.newInstance().newXPath(); 
- 		
- 		NodeList item = (NodeList)xpath.evaluate("//item", document, XPathConstants.NODESET); 
- 		NodeList addr1 = (NodeList)xpath.evaluate("//item/addr1", document, XPathConstants.NODESET); 
- 		NodeList contentid = (NodeList)xpath.evaluate("//item/contentid", document, XPathConstants.NODESET);
- 		NodeList contenttypeid = (NodeList)xpath.evaluate("//item/contenttypeid", document, XPathConstants.NODESET);
- 		NodeList firstimage = (NodeList)xpath.evaluate("//item/firstimage", document, XPathConstants.NODESET); 
- 		NodeList overview = (NodeList)xpath.evaluate("//item/overview", document, XPathConstants.NODESET); 
- 		NodeList title = (NodeList)xpath.evaluate("//item/title", document, XPathConstants.NODESET); 
-		
- 		SightBean bean = new SightBean(); 
- 		
- 		bean.setAddr1(addr1.item(0).getTextContent()); 
- 		bean.setContentid(contentid.item(0).getTextContent());
- 		bean.setContenttypeid(contenttypeid.item(0).getTextContent());
- 		bean.setFirstimage(firstimage.item(0).getTextContent()); 
- 		bean.setOverview(overview.item(0).getTextContent());
- 		bean.setTitle(title.item(0).getTextContent());
- 		
- 		list.add(bean); 
- 		
+		sql = "select * from commoninfo where contenttypeid=12";
+		try{
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				// bean 객체 선언
+		 		SightBean bean = new SightBean(); 
+				bean.setContentid(rs.getString(1));
+				bean.setContenttypeid(rs.getString(2));
+				bean.setAddr1(rs.getString(3));
+				bean.setFirstimage(rs.getString(4));
+				
+				bean.setOverview(rs.getString(5));
+				bean.setTitle(rs.getString(6));
+				bean.setHompage(rs.getString(7));
+				bean.setTel(rs.getString(8));
+				bean.setZipcode(rs.getString(9));
+				list.add(bean);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
  		return list;
  		
 	}
+	
 
 }
