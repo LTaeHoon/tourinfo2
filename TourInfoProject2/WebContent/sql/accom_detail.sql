@@ -17,5 +17,6 @@ reservationurl varchar(300) --예약 사이트
 select * from accom_detail;
 
 drop table accom_detail purge;
-
+select * from COMMONINFO where zipcode=(select zipcode from COMMONINFO where contentid=930345) and contenttypeid=32;
+select count(*) from COMMONINFO where zipcode=(select zipcode from COMMONINFO where contentid=930345) and contenttypeid=32;
 commit work;

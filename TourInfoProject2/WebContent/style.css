@@ -17,7 +17,7 @@ ul{
 }
 
 a{ 
-  text-decoration: none;
+   text-decoration: none; 
   color: #2f2f2f;
   
 }
@@ -124,13 +124,14 @@ img{
 }
 #navbar{overflow-x: hidden;}
 .navbar-default .navbar-nav > li > a {
-  color: #fff;
+  color: #fff; 
   padding: 30px 15px;
   text-transform: uppercase;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
   background-color: transparent;
 }
@@ -266,6 +267,7 @@ img{
 }
 .aboutus_area p {
   line-height: 22px;
+  font-family:'Varela', sans-serif;
 }
 .titile{
   text-transform: uppercase;
@@ -326,6 +328,16 @@ img{
   -o-transition: all 0.5s;
   -ms-transition: all 0.5s;
   transition: all 0.5s;
+ 
+}
+.news_tab .media-body{
+	text-align:left;
+	font-family: 'Varela', sans-serif;
+}
+
+#map{
+	margin-left:0px;
+	margin-right:245px;
 }
 .feed_date{
   color: #ccc;
@@ -1001,6 +1013,7 @@ div[data-dimension] {
   min-height: 500px;
 }
 .courseArchive_content{
+  margin-left: 100px;
   float: left;
   display: inline;
   width: 100%;
@@ -1008,6 +1021,13 @@ div[data-dimension] {
 .courseArchive_content .single_course {
   margin-bottom: 30px;
 }
+.contenttable{
+	margin:auto;
+}
+.title{
+	margin-left:100px;
+}
+
 .pagination li a{
   -webkit-transition: all 0.5s;
   -mz-transition: all 0.5s;
@@ -1683,4 +1703,15 @@ div[data-dimension] {
 @media(max-width:320px ){
 
 	
+}
+
+#listcount{
+	
+ 	font-size: 15px;
+  	font-weight: bold;
+  	background-color: skyblue;
+  	color:white;
+  	text-align: center;
+  	font-family: "Varela",sans-serif;
+  	border-radius: 5px;
 }

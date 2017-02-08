@@ -2,20 +2,20 @@ package com.sight.model;
 
 public class SightDetailBean {
 	
-	private String contentid;
-	private String contenttypeid;
-	private String accomcount;
-	private String chkbabycarriage;
-	private String chkcreditcard;
-	private String chkpet;
-	private String expagerange;
-	private String expguide;
-	private String infocenter;
-	private String opendate;
-	private String parking;
-	private String restdate;
-	private String useseason;
-	private String usetime;
+	private String contentid;			// 
+	private String contenttypeid;		// 
+	private String accomcount;			// 수용인원
+	private String chkbabycarriage;		// 유모차 대여 여부
+	private String chkcreditcard;		// 신용카드 가능 여부
+	private String chkpet;				// 애완동물 가능 여부
+	private String expagerange;			// 체험가능 연령
+	private String expguide;			// 체험 안내
+	private String infocenter;			// 문의 및 안내
+	private String opendate;			// 개장일
+	private String parking;				// 주차시설
+	private String restdate;			// 쉬는날
+	private String useseason;			// 이용시기
+	private String usetime;				// 이용시간
 	
 	public String getContentid() {
 		return contentid;

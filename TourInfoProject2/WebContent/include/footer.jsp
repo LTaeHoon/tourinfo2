@@ -12,14 +12,7 @@
                 <p>Team 2</p>
               </div>
             </div>
-            <div class="col-ld-3  col-md-3 col-sm-3">
-              <div class="single_footer_widget">
-                <h3>Community</h3>
-                <ul class="footer_widget_nav">
-                  <li><a href="#">News &amp; Media</a></li>
-                </ul>
-              </div>
-            </div>
+            
             <div class="col-ld-3  col-md-3 col-sm-3">
               <div class="single_footer_widget">
                 <h3>Others</h3>

@@ -237,7 +237,7 @@ public class AccomDetailDAO {
 	 		return list;	 		
 		}
 		
-		
+		//테이블에 데이터 삽입
 		public void insert(List<AccomDetailBean> com) throws SQLException{
 			
 			
@@ -263,17 +263,14 @@ public class AccomDetailDAO {
 					if(re>=1){
 						System.out.println("insert 성공");
 					}
+					
+					
+					pstmt.close(); con.close();
 				}catch(Exception e){
 					e.printStackTrace();
-				}finally{
-					pstmt.close();
-				}				
+			
 			}
-			con.close();
+			
 		}
-	
-	
-	
-	
-
+		}		
 }

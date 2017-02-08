@@ -242,4 +242,125 @@ public class CommonDAO {
 		}
 		con.close();
 	}
+	
+	  //주변 식당 정보 가져오기
+	   public Commonbean getSurroundFood(String id){      
+	      Commonbean bean = null;
+	      
+	      sql ="select * from COMMONINFO "
+	         + "where zipcode=(select zipcode from COMMONINFO where contentid=?)"
+	         + "and contenttypeid=39";
+	      try{
+	         
+	         pstmt=con.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         rs=pstmt.executeQuery();//쿼리문 실행
+	         
+	          while(rs.next()){
+	             
+	             bean = new Commonbean();
+	             bean.setTitle(rs.getString("title"));
+	             bean.setFirstimage(rs.getString("firstimage"));
+	             bean.setTel(rs.getString("telno"));
+	             bean.setAddr1(rs.getString("addr1"));
+	             bean.setZipcode(rs.getString("zipcode"));
+	             bean.setHompage(rs.getString("homepage"));
+	             bean.setOverview(rs.getString("overview"));             
+	             
+	          }
+	      }catch(Exception e){
+	         e.printStackTrace();
+	      }
+	      return bean;         
+	   }
+	   
+	   //주변 숙소 정보 가져오기
+	      public Commonbean getSurroundAccom(String id){      
+	    	  Commonbean bean =null;
+	    	  sql ="select * from COMMONINFO "
+	      	            + "where zipcode=(select zipcode from COMMONINFO where contentid=?)"
+	      	            + "and contenttypeid=32";
+	       
+	         try{
+	        	 pstmt=con.prepareStatement(sql);
+		         pstmt.setString(1, id);
+		         rs=pstmt.executeQuery();//쿼리문 실행
+		     
+      	             while(rs.next()){
+      	                
+      	            	bean = new Commonbean();
+      	                bean.setTitle(rs.getString("title"));
+      	                bean.setFirstimage(rs.getString("firstimage"));
+      	                bean.setTel(rs.getString("telno"));
+      	                bean.setAddr1(rs.getString("addr1"));
+      	                bean.setZipcode(rs.getString("zipcode"));
+      	                bean.setHompage(rs.getString("homepage"));
+      	                bean.setOverview(rs.getString("overview"));  
+      	                
+      	             }
+		         
+		         }catch(Exception e){
+			            e.printStackTrace();
+		         }
+		        
+		        return bean;      
+	         
+	        
+	             
+	           
+	      }
+	      
+	      //주변 관광지 정보 가져오기
+	      public Commonbean getSurroundSight(String id){      
+	         Commonbean bean = null;
+	         
+	         sql ="select * from COMMONINFO "
+	               + "where zipcode=(select zipcode from COMMONINFO where contentid=?)"
+	               + "and contenttypeid=12";
+	         try{
+	            
+	            pstmt=con.prepareStatement(sql);
+	            pstmt.setString(1, id);
+	            rs=pstmt.executeQuery();//쿼리문 실행
+	            
+	            while(rs.next()){
+	               
+	               bean = new Commonbean();
+	               bean.setTitle(rs.getString("title"));
+	               bean.setFirstimage(rs.getString("firstimage"));
+	               bean.setTel(rs.getString("telno"));
+	               bean.setAddr1(rs.getString("addr1"));
+	               bean.setZipcode(rs.getString("zipcode"));
+	               bean.setHompage(rs.getString("homepage"));
+	               bean.setOverview(rs.getString("overview"));             
+	               
+	            }
+	         }catch(Exception e){
+	            e.printStackTrace();
+	         }
+	         return bean;         
+	      }
+	      
+	      public int getcountfood(String id){
+	    	  int result =-1;
+	    	  int count=0;
+		         sql = "select count(*) from COMMONINFO where zipcode=(select zipcode from COMMONINFO where contentid=?) and contenttypeid=32";
+		         try{
+		        	 pstmt=con.prepareStatement(sql);
+			         pstmt.setString(1, id);
+			         rs=pstmt.executeQuery();//쿼리문 실행
+			         if(rs.next()){
+			         count = rs.getInt(1);
+			         }//
+			         System.out.println(count);
+			         if(count>0){ // 값이 있는 경우
+			        	 result=1;
+			         }
+			         rs.close();pstmt.close();
+		         }catch(Exception e){
+		        	 e.printStackTrace();
+		         }
+			         return result;
+	      	}
+	      
 }

@@ -49,19 +49,32 @@ jQuery(function($){
 	/* ----------------------------------------------------------- */
 	/*  3. NEWS SLIDER
 	/* ----------------------------------------------------------- */
+	
+	
 	$('.single_notice_pane').slick({     
       slide: 'ul'
       
     });
-    $('[href="#notice"]').on('shown.bs.tab', function (e) {
+	
+
+	$('[href="#news"]').on('shown.bs.tab', function (e) {
+    $('.single_notice_pane').resize();
+	}); 
+	
+	$('[href="#notice"]').on('shown.bs.tab', function (e) {
     $('.single_notice_pane').resize();
 	});
-	 $('[href="#news"]').on('shown.bs.tab', function (e) {
-    $('.single_notice_pane').resize();
-	});   
-    
+	
+	
+		$('[href="#notice"]').tab('show');
+		
+		$('[href="#food"]').tab('show');
+		
+		$('[href="#accom"]').tab('show');
 
-
+		$('[href="#news"]').tab('show');
+		
+	
 	/* ----------------------------------------------------------- */
 	/*  4. SKILL CIRCLE
 	/* ----------------------------------------------------------- */

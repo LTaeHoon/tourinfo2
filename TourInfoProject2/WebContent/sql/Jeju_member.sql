@@ -1,4 +1,4 @@
-member.sql
+--member.sql
 drop table Jeju_member purge;
 
 create table Jeju_member(

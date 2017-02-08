@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% request.setCharacterEncoding("utf-8");
+String email = (String)session.getAttribute("email");
+%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
      <title>JEJU TOUR</title>
      
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +29,7 @@
     <!-- smooth animate css file -->
     <link rel="stylesheet" href="css/animate.css"> 
     <!-- preloader -->
-    <link rel="stylesheet" href="css/queryLoader.css" type="text/css" />
+    
     <!-- gallery slider css -->
     <link type="text/css" media="all" rel="stylesheet" href="css/jquery.tosrus.all.css" />    
     <!-- Default Theme css file -->
@@ -60,14 +63,14 @@
               </button>
               <!-- LOGO -->
               <!-- TEXT BASED LOGO -->
-              <a class="navbar-brand" href="index.jsp">JEJU <span>TOUR</span></a>              
+              <a class="navbar-brand" href="index.do">JEJU <span>TOUR</span></a>              
               <!-- IMG BASED LOGO  -->
                <!-- <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"></a>  -->            
                      
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-                <li class="active"><a href="index.do">Home</a></li>
+                <li><a href="index.do">Home</a></li>
                 <li><a href="touristSites.do">Tourist Sites</a></li>
                 <li><a href="accommodation.do">Accommodation</a></li>
                 <li><a href="cuisine.do">Cuisine</a></li>
@@ -75,7 +78,7 @@
                  <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MEMBER<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a><%=email%>님 환영합니다</a></li>             
+                    <li><a><%=email%>님 환영합니다</a></li>          
                     <li><a href="signOut.do">Sign Out</a></li>
                   </ul>
                 </li>          

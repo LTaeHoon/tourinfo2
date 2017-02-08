@@ -26,18 +26,25 @@
     <!-- smooth animate css file -->
     <link rel="stylesheet" href="css/animate.css"> 
     <!-- preloader -->
-    <link rel="stylesheet" href="css/queryLoader.css" type="text/css" />
+    
     <!-- gallery slider css -->
     <link type="text/css" media="all" rel="stylesheet" href="css/jquery.tosrus.all.css" />    
     <!-- Default Theme css file -->
     <link id="switcher" href="css/themes/default-theme.css" rel="stylesheet">
     <!-- Main structure css file -->
     <link href="style.css" rel="stylesheet">
-    
    
     <!-- Google fonts -->
     <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>   
     <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>    
+    <script src="./js/jquery-3.js"></script>
+	<style>
+	.menu.selected{
+		
+		color:#78adc9;
+	}
+	</style>
+
   </head>
   <body>    
 
@@ -67,12 +74,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-                <li class="active"><a href="index.do">Home</a></li>
-                <li><a href="touristSites.do">Tourist Sites</a></li>
-                <li><a href="accommodation.do">Accommodation</a></li>
-                <li><a href="cuisine.do">Cuisine</a></li>
-                <li><a href="gallery.do">Gallery</a></li>                
-                <li><a href="member.do">MEMBER</a></li>       
+                <li><a class=menu href="index.do">Home</a></li>
+                <li><a class=menu href="touristSites.do">Tourist Sites</a></li>
+                <li><a class=menu href="accommodation.do">Accommodation</a></li>
+                <li><a class=menu href="cuisine.do">Cuisine</a></li>
+                <li><a class=menu href="gallery.do">Gallery</a></li>                
+                <li><a class=menu href="member.do">MEMBER</a></li>       
             </div><!--/.nav-collapse -->
           </div>     
         </nav>  

@@ -36,14 +36,20 @@ public class FoodDAO {
 			e.printStackTrace();
 		}	
 	}
-	public List<FoodBean> selectFood() throws SAXException, IOException, ParserConfigurationException, XPathExpressionException {
+	public List<FoodBean> selectFood(int page, int limit){
 		
 		//bean 객체 받을 리스트 객체 선언
 		List<FoodBean> list = new ArrayList<FoodBean>();
-		
-		sql = "select * from commoninfo where contenttypeid=39";
+		int startrow=(page-1)*10+1; //현재페이지에서 시작행
+		int endrow=page*limit;     // 현재페이지에서 끝행
+		//sql = "select * from commoninfo where contenttypeid=39";
+		sql = "select * from (select commoninfo.*,rownum as rnum"
+				+" from (select * from commoninfo where contenttypeid=39 order by contentid desc) commoninfo)"
+				+ " where rnum >=? and rnum<=?";
 		try{
 			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,startrow);
+		    pstmt.setInt(2,endrow);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				// bean 객체 선언
@@ -60,10 +66,103 @@ public class FoodDAO {
 				bean.setZipcode(rs.getString(9));
 				list.add(bean);
 			}
+			 rs.close(); pstmt.close(); con.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}	
  		return list;
  		
 	}
+	
+	public int getListCount(){
+		int count=0;
+		try{
+			sql="select count(*) from commoninfo where contenttypeid=39";
+			pstmt= con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			rs.close();pstmt.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return count;
+	}
+	public FoodDetailBean getDetailInfo(String contentid){
+		
+		FoodDetailBean bean_d = null;
+		
+		sql = "select * from food_detail where contentid = ?";
+		
+		try{
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, contentid);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				bean_d = new FoodDetailBean();
+
+				bean_d.setContentid(rs.getString("contentid"));
+				bean_d.setContenttypeid(rs.getString("contenttypeid"));
+				bean_d.setChkcreditcardfood(rs.getString("chkcreditcardfood"));
+				bean_d.setFirstmenu(rs.getString("firstmenu"));
+				bean_d.setInfocenterfood(rs.getString("infocenterfood"));
+				bean_d.setOpentimefood(rs.getString("opentimefood"));
+				bean_d.setPacking(rs.getString("packing"));
+				bean_d.setParkingfood(rs.getString("parkingfood"));
+				bean_d.setReservationfood(rs.getString("reservationfood"));
+				bean_d.setSmoking(rs.getString("smoking"));
+				bean_d.setTreatmenu(rs.getString("treatmenu"));
+				
+			}
+			
+			rs.close(); pstmt.close(); 
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
+		
+		
+		return bean_d;
+		
+	}
+	
+	
+	
+	public FoodBean getInfo(String contentid){
+		FoodBean bean = null;
+		 
+		sql ="select * from commoninfo where contenttypeid=39 and contentid=?";
+		try{
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, contentid);
+			rs=pstmt.executeQuery();//쿼리문 실행
+		
+		    while(rs.next()){
+		    	bean = new FoodBean();
+		    	bean.setAddr1(rs.getString("addr1"));
+		    	bean.setFirstimage(rs.getString("firstimage"));
+		    	bean.setOverview(rs.getString("overview"));
+		    	bean.setTitle(rs.getString("title"));
+		    	bean.setHompage(rs.getString("homepage"));
+		    	bean.setZipcode(rs.getString("zipcode"));
+		    	bean.setTel(rs.getString("telno"));		    	
+		    }
+		    
+		    
+		    rs.close(); pstmt.close(); con.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return bean;
+	}
+	
+	
 }
